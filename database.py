@@ -5,17 +5,10 @@ def init_db():
     """Initialize the SQLite database"""
     conn = sqlite3.connect('music_history.db')
     cursor = conn.cursor()
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS history (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        artist TEXT NOT NULL,
-        duration INTEGER NOT NULL,
-        played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    ''')
-    
+    file=open("schema.sql",'r')
+    schema=file.read()
+    cursor.executescript(schema)
+    file.close()
     conn.commit()
     conn.close()
 
