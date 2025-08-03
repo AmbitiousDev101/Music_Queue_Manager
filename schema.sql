@@ -5,3 +5,4 @@ CREATE TABLE IF NOT EXISTS history (
     duration INTEGER NOT NULL,
     played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+-- trigger GitHub linguist re-analysis
